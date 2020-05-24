@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Search Engine Meta-->
+    <title>Cat Dog Image Classifier</title>
+    <meta name="Description"
+          content="Image classifier trained to distinct between cats and dogs images. Convolutional Neural Network was built with Keras & Tensorflow(GPU).">
+    <meta name="KeyWords"
+          content="machine learning, blockchain, deep learning, keras, tensorflow, artificial intelligence">
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='img/septellar.png')}}"/>
+    <!-- Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- FontAwesome Styles-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+          integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <!-- Custom Styles-->
+    <link href="{{url_for('static', filename='css/custom-styles.css')}}" rel="stylesheet"/>
+    <link href="{{url_for('static', filename='css/navbar.css')}}" rel="stylesheet"/>
+    <link href="{{url_for('static', filename='css/data.css')}}" rel="stylesheet"/>
+    <!-- Fonts-->
+    <style>
+
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138397523-20"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-138397523-20');
+    </script>
+
+
+    {% block extrahead %}{% endblock %} {% block head_js %} {% endblock head_js %}
+
+
+</head>
+
+<body>
+<!-- WRAPPER -->
+<div id="wrapper">
+
+
+    <!-- TOP NAVBAR -->
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand company-logo" href="{{ url_for('dashboard') }}"><img class="company-logo"
+                                                                                        src="/static/img/logo-grey.png"
+                                                                                        alt="Logo"/></a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li><a class="nav-link" target="_blank" href="https://github.com/LukaszMalucha/Cat-vs.-Dog-Classifier/"><i
+                    class="fab fa-github"></i> <b> GitHub</b></a></li>
+            <li><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id="trigger">menu</i></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!--/. TOP NAVBAR ****************************************************************************************************************************************************************************************** -->
+
+    <div id="page-index">
+
+
+        <div class="dashboard-cards">
+            <div class="row plain-element">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-push-3 col-md-push-3 col-lg-push-3 plain-element">
+                    {% block content %} {% endblock %}
+                </div>
+
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-sm-pull-6 col-md-pull-6 col-lg-pull-6 col-lg-pull-6 plain-element">
+                    <div class="row plain-element">
+                        <div class="card card-side card-side-left">
+                            <div class="row row-side-blue"></div>
+                            <div class="row row-description">
+                                <div class="col-sm-4 col-md-4 plain-element text-center hashtag-column">
+                                    <img src="{{url_for('static', filename='img/logo.png')}}"
+                                         class="img responsive img-column" alt="septellar">
+                                </div>
+                                <div class="col-sm-8 col-md-8 plain-element col-features">
+                                    <h1>Classifier Algorithm </h1>
+                                    <p> The Characteristics</p>
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="card-content">
+                                    <h6>
+                                        Image classifier trained to distinct between cats and dogs images. Convolutional
+                                        Neural Network was built with <b>Keras & Tensorflow(GPU)</b>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-projects card-projects-left">
+                            <div class="row plain-element">
+                                <h1>CNN Architecture</h1>
+                            </div>
+                            <br>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-12 col-sm-12 col-md-12 plain-element">
+                                    <h2> Accuracy</h2>
+                                    <h5> 89%</h5>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-12 col-sm-12 col-md-12 plain-element">
+                                    <h2> Loss</h2>
+                                    <h5> 25%</h5>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-12 col-sm-12 col-md-12 plain-element">
+                                    <h2> Image Input Shape</h2>
+                                    <h5> 128 x 128 x 3</h5>
+                                </div>
+                            </div>
+                             <div class="row plain-element row-visit">
+                                <div class="col-xs-12 col-sm-12 col-md-12 plain-element">
+                                    <h2> Activation Function</h2>
+                                    <h5> ReLu</h5>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-12 col-sm-12 col-md-12 plain-element">
+                                    <h2> Convolutional Layers</h2>
+                                    <h5> 3</h5>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-12 col-sm-12 col-md-12 plain-element">
+                                    <h2> Optimizer</h2>
+                                    <h5> Adam</h5>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-12 col-sm-12 col-md-12 plain-element">
+                                    <h2> Loss Function</h2>
+                                    <h5> Binary Crossentropy</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 plain-element">
+                    <div class="row plain-element">
+                        <div class="card card-side card-side-right">
+                            <div class="row row-side-blue"></div>
+                            <div class="row row-description">
+                                <div class="col-sm-4 col-md-4 plain-element text-center hashtag-column">
+                                    <img src="{{url_for('static', filename='img/logo.png')}}"
+                                         class="img responsive img-column" alt="septellar">
+                                </div>
+                                <div class="col-sm-8 col-md-8 plain-element col-features">
+                                    <h1>Download Classifier </h1>
+                                    <p>GitHub Repository </p>
+                                </div>
+                            </div>
+                            <div class="row plain-element">
+                                <div class="card-content">
+                                    <div class="row row-button text-center">
+                                        <a class="btn-trends" target="_blank" href="https://github.com/LukaszMalucha/Cat-vs.-Dog-Classifier/blob/master/deep_learning/ConvolutionalNeuralNetwork.py">CNN Classifier</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-projects card-projects-right">
+                            <div class="row plain-element">
+                                <h1>Visit other projects</h1>
+                            </div>
+                            <br>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-3 col-sm-3 col-md-3 plain-element">
+                                    <img src="{{url_for('static', filename='img/main/blockchain.jpg')}}"
+                                         class="img responsive img-icon" alt="blockchain">
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 plain-element">
+                                    <p> Blockchain Example</p>
+                                    <button class="btn-visit" onclick="window.open('http://www.minerstartup.com')">Visit
+                                        Application
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-3 col-sm-3 col-md-3 plain-element">
+                                    <img src="{{url_for('static', filename='img/main/thompson.jpg')}}"
+                                         class="img responsive img-icon" alt="thompson">
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 plain-element">
+                                    <p> Thompson Sampling</p>
+                                    <button class="btn-visit" onclick="window.open('http://www.thompsonsampling.com')">
+                                        Visit
+                                        Application
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-3 col-sm-3 col-md-3 plain-element">
+                                    <img src="{{url_for('static', filename='img/main/quant.jpg')}}"
+                                         class="img responsive img-icon" alt="quant">
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 plain-element">
+                                    <p> Quant Properties</p>
+                                    <button class="btn-visit" onclick="window.open('http://www.quantproperties.com')">
+                                        Visit
+                                        Application
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-3 col-sm-3 col-md-3 plain-element">
+                                    <img src="{{url_for('static', filename='img/main/unflasking.jpg')}}"
+                                         class="img responsive img-icon" alt="unflasking">
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 plain-element">
+                                    <p> Unflasking AI - Python </p>
+                                    <button class="btn-visit" onclick="window.open('http://www.unflasked.com')">Visit
+                                        Application
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-3 col-sm-3 col-md-3 plain-element">
+                                    <img src="{{url_for('static', filename='img/main/bepartisan.jpg')}}"
+                                         class="img responsive img-icon" alt="bepartisan">
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 plain-element">
+                                    <p> Be-partisan Classifier </p>
+                                    <button class="btn-visit" onclick="window.open('http://www.bepartisan.com')">Visit
+                                        Application
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-3 col-sm-3 col-md-3 plain-element">
+                                    <img src="{{url_for('static', filename='img/main/sentiment.jpg')}}"
+                                         class="img responsive img-icon" alt="quant">
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 plain-element">
+                                    <p> Twitter API Dashboard</p>
+                                    <button class="btn-visit" onclick="window.open('https://twitterati.herokuapp.com')">
+                                        Visit
+                                        Application
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row plain-element row-visit">
+                                <div class="col-xs-3 col-sm-3 col-md-3 plain-element">
+                                    <img src="{{url_for('static', filename='img/main/two-cities.jpg')}}"
+                                         class="img responsive img-icon" alt="bepartisan">
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 plain-element">
+                                    <p> Woeid Search Engine </p>
+                                    <button class="btn-visit" onclick="window.open('http://www.findmecity.com')">Visit
+                                        Application
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p><a target="_blank"
+          href="https://www.freeprivacypolicy.com/privacy/view/9b972ff9a2aaeda03f07216c15625791/">Privacy
+        Policy</a> • © 2019 - 2020 www.unflasked.com - All Rights Reserved • Powered by Septellar &trade;</p>
+</div>
+
+
+
+<!-- Materialize Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+
+</html>
