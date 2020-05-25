@@ -7,18 +7,17 @@ from flask import Flask, jsonify
 from flask import render_template
 from flask_restful import Api
 from imageio import imread
-from resources.image_classifier import ImageClassifier
+from resources.image_classifier import ImageClassify
 
-# import env
 
 # LOAD MODEL STRUCTURE
-with open("fashion_model_flask.json", "r") as f:
+with open("imagenet.json", "r") as f:
     model_json = f.read()
 
 model = tf.keras.models.model_from_json(model_json)
 
 # LOAD MODEL WEIGHTS
-model.load_weights("fashion_model_flask.h5")
+model.load_weights("imagenet.h5")
 
 ## App Settings
 
@@ -29,11 +28,11 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 
 app.config['DEBUG'] = True
 api = Api(app)
-
+api.add_resource(ImageClassify, '/image_classify')
 
 
 ## Register Resources
-api.add_resource(ImageClassifier, '/predict')
+# api.add_resource(ImageClassifier, '/predict')
 
 
 
@@ -42,19 +41,6 @@ def dashboard():
     """Main Dashboard"""
     return render_template("dashboard.html")
 
-
-@app.route("/api/v1/<string:img_name>", methods=["POST"])
-def classify_image(img_name):
-
-    upload_dir = "uploads/"
-
-    image = imread(upload_dir + img_name)
-
-    classes = ["T-shirt/top", "Trouser", "Pullover", "Dress", "Coat", "Sandal", "Shirt", "Sneaker", "Bag", "Ankle boot"]
-
-    prediction = model.predict([image.reshape(1, 28 * 28)])
-
-    return jsonify({"object_detected": classes[np.argmax(prediction[0])]})
 
 
 
